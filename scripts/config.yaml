@@ -1,6 +1,5 @@
 # Configuration file
 application:
-  logpath: ./log/
-  inputpath: ./input/
-  outputpath: /output/
-  
+  logpath: log/
+  inputpath: input/
+  outputpath: output/

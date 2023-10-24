@@ -2,23 +2,32 @@ import yfinance as yf
 import pandas as pd
 import getticker
 import configmanager
+import os
 
 class GetData:
     def __init__(self):
         config_manager = configmanager.Configs()
         self.all_configs = config_manager.read_configs()
+        self._output_path = self.all_configs['application']['outputpath']
 
+def runprocess():
+    getdata = GetData()
+    tickerlist = getticker.TickerList()
+    dfticker = tickerlist.readdata()
+    print(dfticker) 
 
-        
+    for index, row in dfticker.iterrows():
+        tickerdata = yf.Ticker(row['Symbol'])
+        df = pd.DataFrame(tickerdata.dividends)
+        if not df.empty:
+            path = getdata._output_path + row['Symbol'] + '.csv'
+            df.to_csv(path)
 
-tickerlist = getticker.TickerList()
-dfticker = tickerlist.readdata()
-print(dfticker) 
+        print(tickerdata.dividends)
+        # tickerdf = tickerdata.history(period='1d', start='2013-10-24', end='2023-10-24')
 
-for index, row in dfticker.iterrows():
-    tickerdata = yf.Ticker(row['Symbol'])
-    print(tickerdata.dividends)
-    # tickerdf = tickerdata.history(period='1d', start='2013-10-24', end='2023-10-24')
+print(os.getcwd())
+runprocess()
 
 # tickersymbol = '5PAISA.NS'
 # tickerdata = yf.Ticker(tickersymbol)
