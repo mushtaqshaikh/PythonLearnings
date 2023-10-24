@@ -1,6 +1,15 @@
 import yfinance as yf
 import pandas as pd
 import getticker
+import configmanager
+
+class GetData:
+    def __init__(self):
+        config_manager = configmanager.Configs()
+        self.all_configs = config_manager.read_configs()
+
+
+        
 
 tickerlist = getticker.TickerList()
 dfticker = tickerlist.readdata()
