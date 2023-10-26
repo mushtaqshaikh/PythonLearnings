@@ -4,7 +4,7 @@ import os
 class Configs:
     def __init__(self):
         # self.__config_path = './config.yaml'
-        self.__config_path = 'scripts/config.yaml'
+        self.__config_path = 'PythonLearnings/scripts/config.yaml'
         
     def read_configs(self):
         try:

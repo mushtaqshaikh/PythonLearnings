@@ -16,11 +16,13 @@ def runprocess():
     dfticker = tickerlist.readdata()
     print(dfticker) 
 
-    for index, row in dfticker.iterrows():
+    # for index, row in dfticker.iterrows():
+    for row in dfticker.iterrows():
         tickerdata = yf.Ticker(row['Symbol'])
         df = pd.DataFrame(tickerdata.dividends)
         if not df.empty:
             path = getdata._output_path + row['Symbol'] + '.csv'
+            print(path)
             df.to_csv(path)
 
         print(tickerdata.dividends)

@@ -1,5 +1,5 @@
 # Configuration file
 application:
-  logpath: log/
-  inputpath: input/
-  outputpath: output/
+  logpath: ./PythonLearnings/log/
+  inputpath: ./PythonLearnings/input/
+  outputpath: ./PythonLearnings/output/
